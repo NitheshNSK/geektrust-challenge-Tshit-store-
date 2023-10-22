@@ -7,7 +7,7 @@ import ProductGrid from '../mini_components/ProductGrid'
 import SearchField from '../mini_components/SearchField'
 import Filters from '../mini_components/Filters'
 
-function HomePage({FeturedProductData}) {
+function HomePage({FeturedProductData,setCartProduct,cartProduct}) {
 
 
 /**
@@ -28,6 +28,8 @@ function HomePage({FeturedProductData}) {
   const [FilterCardData,setFilterCard]=useState([]);
 
   const [showingFilteredCard,setShowingFilterCard]=useState([])
+
+  
   /**
    * @function groupingForFilterContainer
    * @param {<Arr/>} data  -product data
@@ -73,10 +75,10 @@ function HomePage({FeturedProductData}) {
 
     FilterCardData?.map((element)=>{
         FeturedProductData.map((product)=>{
-           if(product.color===element||
-            product.gender===element||
-            product.name===element||
-            product.type===element
+           if(product.color.toLowerCase()===element.toLowerCase()||
+            product.gender.toLowerCase()===element.toLowerCase()||
+            product.name.toLowerCase()===element.toLowerCase()||
+            product.type.toLowerCase()===element.toLowerCase()
             ){
               
               filteredArr.push(product)
@@ -108,7 +110,7 @@ function HomePage({FeturedProductData}) {
 
   return (
     <div className='Home-page'>
-        <Navbar/>
+        <Navbar cartProduct={cartProduct}/>
         <Box className="img-container">
             <img src={CoverImg} alt="" />
         </Box>
@@ -116,6 +118,8 @@ function HomePage({FeturedProductData}) {
           <SearchField
           displayFilterContainer={displayFilterContainer}
           setDisplayContainer={setDisplayContainer}
+          FilteringCategories={FilteringCategories}
+          setFilterCard={setFilterCard}
           />
         </Box>
         <Grid container>
@@ -129,9 +133,17 @@ function HomePage({FeturedProductData}) {
             </Grid>
             <Grid item className="grid-container" sm={9}>
               {showingFilteredCard?.length>0?
-                <ProductGrid FeturedProductData={showingFilteredCard}/>
+                <ProductGrid 
+                FeturedProductData={showingFilteredCard}
+                setCartProduct={setCartProduct}
+                cartProduct={cartProduct}
+                />
                 :
-                <ProductGrid FeturedProductData={FeturedProductData}/>
+                <ProductGrid 
+                FeturedProductData={FeturedProductData}
+                setCartProduct={setCartProduct}
+                cartProduct={cartProduct}
+                />
               }
               
             </Grid >

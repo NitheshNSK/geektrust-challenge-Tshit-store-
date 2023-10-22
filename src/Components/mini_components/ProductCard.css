@@ -4,7 +4,8 @@
     height: 20rem;
 }
 .card-container:hover{
-    transform: translateY(-1.5rem)
+    transform: translateY(-0.5rem);
+    cursor: pointer;
 }
 
 .card-img-container{
