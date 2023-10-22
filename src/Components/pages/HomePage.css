@@ -1,0 +1,19 @@
+.Home-page{
+    display: flex;
+    flex-direction: column;
+
+}
+.img-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+.img-container >img{
+    width: 80%;
+}
+.grid-container{
+    display: flex;
+    justify-content: center;
+}
