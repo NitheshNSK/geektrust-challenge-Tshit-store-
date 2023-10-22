@@ -18,8 +18,16 @@ function HomePage({FeturedProductData}) {
     colors:[],
     Brands:[]
   })
+  /**
+   * 
+   */
   const [displayFilterContainer,setDisplayContainer]=useState("none")
-  
+  /**
+   * 
+   */
+  const [FilterCardData,setFilterCard]=useState([]);
+
+  const [showingFilteredCard,setShowingFilterCard]=useState([])
   /**
    * @function groupingForFilterContainer
    * @param {<Arr/>} data  -product data
@@ -39,7 +47,47 @@ function HomePage({FeturedProductData}) {
       }})
      return {colors,BrandNames}
   }
+  const filterProduct=(FeturedProductData,FilterCardData)=>{
+    let filteredArr=[]
 
+    FilterCardData?.map((element)=>{
+    if(element=="0"){
+      FeturedProductData.map((product)=>{
+        if(product.price<=250)
+          filteredArr.push(product) 
+      })
+     }
+     if(element=="250"){
+      FeturedProductData.map((product)=>{
+        if(product.price<450&&product.price>251)
+          filteredArr.push(product) 
+      })
+     }
+     if(element=="450"){
+      FeturedProductData.map((product)=>{
+        if(product.price>450&&product.price<=500)
+          filteredArr.push(product) 
+      })
+     }
+    })
+
+    FilterCardData?.map((element)=>{
+        FeturedProductData.map((product)=>{
+           if(product.color===element||
+            product.gender===element||
+            product.name===element||
+            product.type===element
+            ){
+              
+              filteredArr.push(product)
+           }
+          
+        })
+      })
+    
+    return filteredArr;
+    
+  }
   /**
    * 
    */
@@ -48,7 +96,13 @@ function HomePage({FeturedProductData}) {
     setFilteringData(filterCategories)
     
   },[FeturedProductData])
-
+  /**
+   * 
+   */
+  useEffect(()=>{
+    let responceArr=filterProduct(FeturedProductData,FilterCardData);
+    setShowingFilterCard([...responceArr])
+  },[FeturedProductData,FilterCardData])
 
 
 
@@ -69,10 +123,17 @@ function HomePage({FeturedProductData}) {
                 <Filters  
                 DataForFilterContainer={FilteringCategories}
                 displayFilterContainer={displayFilterContainer}
+                FilterCardData={FilterCardData}
+                setFilterCard={setFilterCard}
                 />
             </Grid>
             <Grid item className="grid-container" sm={9}>
-              <ProductGrid FeturedProductData={FeturedProductData}/>
+              {showingFilteredCard?.length>0?
+                <ProductGrid FeturedProductData={showingFilteredCard}/>
+                :
+                <ProductGrid FeturedProductData={FeturedProductData}/>
+              }
+              
             </Grid >
         </Grid>
         {/* <Box >
