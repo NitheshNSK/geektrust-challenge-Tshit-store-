@@ -12,14 +12,14 @@ import { useState } from 'react';
 
 function App() {
   const [cartProduct,setCartProduct]=useState([])
-  const {data,error}=useFetch(GEEK_TRUST_ENDPOINT)
+  const {data}=useFetch(GEEK_TRUST_ENDPOINT)
   
   return (
     <div>
     <Routes>
       <Route index path='/' element={<HomePage FeturedProductData={data} setCartProduct={setCartProduct} cartProduct={cartProduct}/> } />
       <Route path='product' element={<ProductPage />}/>
-      <Route path='cart' element={<CartPage cartProduct={cartProduct}/>} />
+      <Route path='cart' element={<CartPage cartProduct={cartProduct} setCartProduct={setCartProduct}/>} />
     </Routes>
     </div>
   );

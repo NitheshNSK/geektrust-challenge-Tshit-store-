@@ -1,5 +1,5 @@
-import { Box, Button, Stack, Typography } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import { Box, Button, Stack } from '@mui/material'
+import React, {  useState } from 'react'
 import "./ProductCard.css"
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import AddIcon from '@mui/icons-material/Add';
@@ -7,7 +7,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { useSnackbar } from 'notistack';
 
 function ProductCard({cardDetail,setCartProduct,cartProduct}) {
-    const { enqueueSnackbar, closeSnackbar } = useSnackbar()
+    const { enqueueSnackbar } = useSnackbar()
     const [counter,setCounter]=useState(0);
 
 const productExistInCart=(cartProduct,cardDetail,counter)=>{
@@ -108,4 +108,4 @@ const decreaseCounterValue=(cartProduct,cardDetail)=>{
   )
 }
 
-export default ProductCard
+export default ProductCard;

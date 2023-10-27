@@ -1,3 +1,44 @@
 .cart-container{
-    height: 100vh;
+    height: 100%;
+    color:red;
+}
+.empty-cart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding-bottom: 1em;
+    margin-top: 2em;
+}
+.cart-products-container{
+    margin: 1rem;
+    width: 100%;
+}
+
+.billing{
+    margin: 1rem;
+
+}
+
+.billing-table{
+    width: 100%;
+}
+.billing-table > tr >td {
+    text-align: center;
+    color: black;
+  }
+.billing-table > tr >th {
+    color: green;
+}
+
+.billing-container{
+    margin: auto;
+    margin-top: 3rem;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.billing-detail{
+    display: flex;
 }

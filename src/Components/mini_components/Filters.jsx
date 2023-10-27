@@ -1,14 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, {   } from 'react'
 import "./Filters.css"
 import { Typography } from '@mui/material'
 function Filters({DataForFilterContainer,displayFilterContainer,FilterCardData,setFilterCard}) {
   
-  /**
-   * @function removeItem - remove if check box checked is false it remove it from filtering
-   * @param {*} arr 
-   * @param {*} value 
-   * @returns 
-   */
+
+/**
+ * Removes all occurrences of a specific value from an array and returns a new array without the value.
+ *
+ * @param {Array} arr - The original array from which the value needs to be removed.
+ * @param {*} value - The value to be removed from the array.
+ * @returns {Array} - A new array with all occurrences of the specified value removed.
+ *
+ * @example
+ * // Sample usage of removeItem function
+ * const originalArray = [1, 2, 3, 4, 2, 5];
+ * const valueToRemove = 2;
+ * const newArray = removeItem(originalArray, valueToRemove);
+ * console.log(newArray); // Output: [1, 3, 4, 5]
+ *
+ * // You can use this function to remove specific items from an array without modifying the original array.
+ */
+  
   function removeItem(arr, value) {
     let arrayToRet= arr.filter(elem=>elem!==value)
     return arrayToRet;

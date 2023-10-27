@@ -1,15 +1,14 @@
 import React from 'react'
 import "./Navbar.css"
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Button, TextField } from '@mui/material';
+import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 function Navbar({ProductPage,cartProduct}) {
   const navigate=useNavigate();
 
 
-  console.log()
-  console.log(cartProduct)
+
   return (
     <div className='nav-container'>
         <h3>TeeRex Store</h3> 
